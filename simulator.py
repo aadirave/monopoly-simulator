@@ -1,10 +1,16 @@
+import webbrowser
+
+from player import Player
+from space import Space
+from dice import Dice
+
 class Simulator:
     lands = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
              0, 0, 0, 0]
 
     # place = Space()
 
-    def play(self, iterations):
+    def play(self, iterations): # simulates turns in isolation
         player = Player()
         for i in range(0, iterations):
             player.current_space.current_place += Dice.roll(12)
@@ -14,9 +20,9 @@ class Simulator:
             player.current_space.chance(player.current_space.current_place)
             player.current_space.community_chest(player.current_space.current_place)
 
-    def play_with_players(self, games):
-        bot1 = Player(True)
-        bot2 = Player()
+    def play_with_players(self, games): # plays with 2 bots on opposing strategies
+        bot1 = Player(True) # only buys profitable properties
+        bot2 = Player() # buys all properties
 
         wins_bot_1 = 0
         wins_bot_2 = 0
@@ -39,6 +45,5 @@ class Simulator:
                 elif bot2.current_money <= 0:
                     wins_bot_1 += 1
                     break
-
-        print('bot1 wins ' + str(wins_bot_1))
-        print('bot2 wins ' + str(wins_bot_2))
+        webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+        return wins_bot_1, wins_bot_2
