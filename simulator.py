@@ -1,5 +1,3 @@
-import webbrowser
-
 from player import Player
 from space import Space
 from dice import Dice
@@ -45,5 +43,4 @@ class Simulator:
                 elif bot2.current_money <= 0:
                     wins_bot_1 += 1
                     break
-        webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
         return wins_bot_1, wins_bot_2
